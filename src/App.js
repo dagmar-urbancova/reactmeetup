@@ -1,26 +1,29 @@
-import { Route } from 'react-router-dom';
-import AllMeetupsPage from './pages/AllMeetups';
-import NewMeetupsPage from './pages/NewMeetup';
-import FavoritesPage from './pages/Favorites';
+import { Route, Switch } from "react-router-dom";
+import AllMeetupsPage from "./pages/AllMeetups";
+import NewMeetupsPage from "./pages/NewMeetup";
+import FavoritesPage from "./pages/Favorites";
 
-// call pages based on address
+// call pages based on address, checks if the path starts with the given string
 // for localhost:3000/ call AllMeetupsPage
-// for localhost:3000/favorites call AllMeetupsPage and FavoritesPage (nested)
+// <Switch> renders only one page, first match, using 'exact' matches the full  path to the string
+// for localhost:3000/favorites call FavoritesPage (separately)
 
 function App() {
   // localhost:3000/
   // my-page.com/
   return (
     <div className="App">
-<Route path='/'>
-  <AllMeetupsPage></AllMeetupsPage>
-</Route>
-<Route path='/new-meetup'>
-  <NewMeetupsPage/>
-</Route>
-<Route path='/favorites'>
-  <FavoritesPage />
-</Route>
+      <Switch>
+        <Route path="/" exact>
+          <AllMeetupsPage></AllMeetupsPage>
+        </Route>
+        <Route path="/new-meetup">
+          <NewMeetupsPage />
+        </Route>
+        <Route path="/favorites">
+          <FavoritesPage />
+        </Route>
+      </Switch>
     </div>
   );
 }
