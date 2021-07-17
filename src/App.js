@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom';
+import AllMeetupsPage from './pages/AllMeetups';
+import NewMeetupsPage from './pages/NewMeetup';
+import FavoritesPage from './pages/Favorites';
+
+// call pages based on address
+// for localhost:3000/ call AllMeetupsPage
+// for localhost:3000/favorites call AllMeetupsPage and FavoritesPage (nested)
 
 function App() {
+  // localhost:3000/
+  // my-page.com/
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<Route path='/'>
+  <AllMeetupsPage></AllMeetupsPage>
+</Route>
+<Route path='/new-meetup'>
+  <NewMeetupsPage/>
+</Route>
+<Route path='/favorites'>
+  <FavoritesPage />
+</Route>
     </div>
   );
 }
